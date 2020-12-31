@@ -3,7 +3,7 @@
 void mx_out_err(t_li ***error, st_fl *fl) {
     if (error && *error && **error) {
         mx_sort(error, fl);
-        fl->files = 1;
+        fl->fl = 1;
         fl->ex = 1;
         for (int i = 0; (*error)[i]; i++) {
             mx_printerr("uls: ");

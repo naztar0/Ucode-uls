@@ -45,6 +45,6 @@ void mx_del_files(t_li ***args, st_fl *fl) {
             }
         }
     }
-    fl->files = 1;
+    fl->fl = 1;
     mx_del_liarr(args, dirs);
 }

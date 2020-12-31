@@ -78,7 +78,7 @@ void mx_opendir(t_li ***args, st_fl *fl) {
 		mx_out_put_menu(&files, fl, 0);
 		if (*args)
 			mx_printchar('\n');
-		fl->files = 1;
+		fl->fl = 1;
         mx_del_arr_arr(&files);
 	}
     if (*args)

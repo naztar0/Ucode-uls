@@ -15,7 +15,7 @@ static void nulloutput(st_fl **fl) {
     (*fl)->l = 0;
     (*fl)->C = 0;
     (*fl)->m = 0;
-    (*fl)->force = 0;
+    (*fl)->fr = 0;
 }
 
 static void add_flags(st_fl **fl, char flag) {
@@ -61,7 +61,7 @@ static void add_flags(st_fl **fl, char flag) {
         else if (flag == 'C')
             (*fl)->C = 1;
         else if (flag == '1')
-            (*fl)->force = 1;
+            (*fl)->fr = 1;
         else if (flag == 'x')
             (*fl)->x = 1;
         else if (flag == 'm')

@@ -79,7 +79,7 @@ t_li **mx_get_files(t_li ***args, st_fl *fl) {
     }
 
     if (num->n_d > 1)
-        fl->files = 1;
+        fl->fl = 1;
     mx_del_liarr(args, dirs);
     mx_out_err(&errors, fl);
     free(num);

@@ -38,15 +38,15 @@ void mx_out_put_menu(t_li ***names, st_fl *fl, int flag) {
             mx_output_x(*names);
         if (fl->m == 1)
             mx_output_m(*names, fl);
-        if (fl->force == 1)
+        if (fl->fr == 1)
             out_put1(*names, fl);
-        if (fl->G == 1 && fl->m != 1 && fl->l != 1 && fl->force != 1)
+        if (fl->G == 1 && fl->m != 1 && fl->l != 1 && fl->fr != 1)
             mx_output_g(*names, fl);
         if (fl->l != 1 && fl->C != 1 && fl->x != 1 && fl->m != 1
-            && fl->force != 1 && !fl->G && !fl->g && !fl->o && isatty(1))
+            && fl->fr != 1 && !fl->G && !fl->g && !fl->o && isatty(1))
             mx_output_c(*names);
         if (!isatty(1) && fl->C != 1 && fl->x != 1 && fl->m != 1
-            && fl->l != 1 && fl->g != 1 && fl->o != 1 && fl->force != 1)
+            && fl->l != 1 && fl->g != 1 && fl->o != 1 && fl->fr != 1)
             out_put1(*names, fl);
     }
 }
@@ -55,7 +55,7 @@ static void outputerropen(t_li **args, st_fl *fl) {
     if ((*args)->open != NULL) {
         mx_out_put_menu(&(*args)->open, fl, 1);
         if (fl->R == 1) {
-            fl->files = 1;
+            fl->fl = 1;
             mx_del_files(&(*args)->open, fl);
             if ((*args)->open) {
                 mx_printchar('\n');
@@ -75,7 +75,7 @@ static void outputerropen(t_li **args, st_fl *fl) {
 void mx_out_put_all(t_li ***args, st_fl *fl) {
     if (*args) {
         for (int i = 0; (*args)[i] != NULL; i++) {
-            if (fl->files == 1) {
+            if (fl->fl == 1) {
                 if ((*args)[i]->path[0] == '/' && (*args)[i]->path[1] == '/')
                     mx_printstr(&(*args)[i]->path[1]);
                 else
@@ -84,7 +84,7 @@ void mx_out_put_all(t_li ***args, st_fl *fl) {
 				mx_printchar('\n');
             }
             outputerropen(&(*args)[i], fl);
-            if (fl->files == 1 && (*args)[i+1])
+            if (fl->fl == 1 && (*args)[i+1])
                 mx_printchar('\n');
         }
         mx_del_arr_arr(args);
